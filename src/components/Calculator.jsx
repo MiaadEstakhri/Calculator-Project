@@ -7,16 +7,23 @@ import { useState } from "react";
 const Calculator = () => {
   const [number, setNumber] = useState("");
 
+  // plus numbers
+  const add = (numberFirst, numberSecond) => {
+    let total = Number(numberFirst) + Number(numberSecond);
+    setNumber(number + " = " + total);
+  };
+
   const equal = () => {
     let [numberFirst, operation, numberSecond] = number.split(" ");
 
     switch (operation) {
-        case value:
-            
-            break;
-    
-        default:
-            break;
+      case "+":
+        return add(numberFirst, numberSecond);
+
+        break;
+
+      default:
+        return operation;
     }
   };
 
@@ -45,12 +52,10 @@ const Calculator = () => {
           <Button item="." onclick={() => setNumber(number + ".")} />
           <Button
             item="="
-            onclick={
-              (() => {
-                setNumber(number + "=");
-              },
-              equal)
-            }
+            onclick={() => {
+              setNumber(number + "=");
+              equal();
+            }}
           />
           <Button
             className="fs-4"
