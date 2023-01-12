@@ -1,0 +1,24 @@
+.wrapper {
+  background-color: #0f172a;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+input {
+  outline: none;
+  background-color: #0f172a;
+  color: #f1f5f9;
+  border: 3px solid #475569;
+}
+
+.button-box {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+button {
+  background-color: #475569;
+  color: #f1f5f9;
+}
+
+button:hover {
+  color: #0f172a;
+}
