@@ -13,13 +13,22 @@ const Calculator = () => {
     setNumber(number + " = " + total);
   };
 
+  //   mines numbers
+  const mines = (numberFirst, numberSecond) => {
+    let total = Number(numberFirst) - Number(numberSecond);
+    setNumber(number + " = " + total);
+  };
+
   const equal = () => {
     let [numberFirst, operation, numberSecond] = number.split(" ");
 
     switch (operation) {
       case "+":
         return add(numberFirst, numberSecond);
+        break;
 
+      case "-":
+        return mines(numberFirst, numberSecond);
         break;
 
       default:
