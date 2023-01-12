@@ -6,7 +6,20 @@ import { useState } from "react";
 
 const Calculator = () => {
   const [number, setNumber] = useState("");
-  
+
+  const equal = () => {
+    let [numberFirst, operation, numberSecond] = number.split(" ");
+
+    switch (operation) {
+        case value:
+            
+            break;
+    
+        default:
+            break;
+    }
+  };
+
   return (
     <main className="d-flex justify-content-center align-items-center">
       <Wrapper>
@@ -30,7 +43,15 @@ const Calculator = () => {
           <Button item="+" onclick={() => setNumber(number + " + ")} />
           <Button item="0" onclick={() => setNumber(number + "0")} />
           <Button item="." onclick={() => setNumber(number + ".")} />
-          <Button item="=" onclick={() => setNumber(number + "=")} />
+          <Button
+            item="="
+            onclick={
+              (() => {
+                setNumber(number + "=");
+              },
+              equal)
+            }
+          />
           <Button
             className="fs-4"
             item="C"
