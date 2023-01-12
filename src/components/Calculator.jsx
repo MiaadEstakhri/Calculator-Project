@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const Calculator = () => {
   const [number, setNumber] = useState("");
-  console.log(number);
+  
   return (
     <main className="d-flex justify-content-center align-items-center">
       <Wrapper>
