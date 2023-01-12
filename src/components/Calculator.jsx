@@ -62,7 +62,7 @@ const Calculator = () => {
         <Screen value={number} />
         <ButtonBox>
           <Button item="Ac" onclick={() => setNumber("")} />
-          <Button item="+/-" onclick={() => setNumber(number + "1")} />
+          <Button item="+/-" onclick={() => setNumber(number * "-1")} />
           <Button item="%" onclick={() => setNumber(number / 100)} />
           <Button item="/" onclick={() => setNumber(number + " / ")} />
           <Button item="7" onclick={() => setNumber(number + "7")} />
