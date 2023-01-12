@@ -19,6 +19,18 @@ const Calculator = () => {
     setNumber(number + " = " + total);
   };
 
+  //   Division numbers
+  const division = (numberFirst, numberSecond) => {
+    let total = Number(numberFirst) / Number(numberSecond);
+    setNumber(number + " = " + total);
+  };
+
+  //   multiple numbers
+  const multiple = (numberFirst, numberSecond) => {
+    let total = Number(numberFirst) * Number(numberSecond);
+    setNumber(number + " = " + total);
+  };
+
   const equal = () => {
     let [numberFirst, operation, numberSecond] = number.split(" ");
 
@@ -29,6 +41,14 @@ const Calculator = () => {
 
       case "-":
         return mines(numberFirst, numberSecond);
+        break;
+
+      case "/":
+        return division(numberFirst, numberSecond);
+        break;
+
+      case "*":
+        return multiple(numberFirst, numberSecond);
         break;
 
       default:
@@ -44,7 +64,7 @@ const Calculator = () => {
           <Button item="Ac" onclick={() => setNumber("")} />
           <Button item="+/-" onclick={() => setNumber(number + "1")} />
           <Button item="%" onclick={() => setNumber(number / 100)} />
-          <Button item="/" onclick={() => setNumber(number + "/")} />
+          <Button item="/" onclick={() => setNumber(number + " / ")} />
           <Button item="7" onclick={() => setNumber(number + "7")} />
           <Button item="8" onclick={() => setNumber(number + "8")} />
           <Button item="9" onclick={() => setNumber(number + "9")} />
