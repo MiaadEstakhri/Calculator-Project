@@ -24,20 +24,22 @@ const Calculator = () => {
         return;
     }
   };
-
   const equal = () => {
     let parts = number.split(" ");
     let result = Number(parts[0]);
-    let operation = null;
-
-    let index = 0;
-    for (let part of parts) {
-      if (index % 2 === 0 && index !== 0) {
-        result = calculate(result, operation, Number(part));
-      } else if (index % 2 !== 0) {
-        operation = part;
-      }
-      index++;
+    console.log("33333", parts, result);
+    for (let i = 1; i < parts.length; i += 2) {
+      let operation = parts[i];
+      let nextNumber = Number(parts[i + 1]);
+      result = calculate(result, operation, nextNumber);
+      console.log(
+        "aaaa",
+        operation,
+        "bbbbb",
+        nextNumber,
+        "cccc",
+        (result = calculate(result, operation, nextNumber))
+      );
     }
 
     setNumber(result.toString());
