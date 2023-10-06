@@ -7,73 +7,46 @@ import { useState } from "react";
 const Calculator = () => {
   const [number, setNumber] = useState("");
 
-  // plus numbers
-  const add = (numberFirst, numberSecond) => {
-    let total = Number(numberFirst) + Number(numberSecond);
-    setNumber(number + " = " + total);
-  };
-
-  //   mines numbers
-  const mines = (numberFirst, numberSecond) => {
-    let total = Number(numberFirst) - Number(numberSecond);
-    setNumber(number + " = " + total);
-  };
-
-  //   Division numbers
-  const division = (numberFirst, numberSecond) => {
-    let total = Number(numberFirst) / Number(numberSecond);
-    setNumber(number + " = " + total);
-  };
-
-  //   multiple numbers
-  const multiple = (numberFirst, numberSecond) => {
-    let total = Number(numberFirst) * Number(numberSecond);
-    setNumber(number + " = " + total);
-  };
-
-  const equal = () => {
-    let [numberFirst, operation, numberSecond] = number.split(" ");
+  const calculate = (numberFirst, operation, numberSecond) => {
+    numberFirst = Number(numberFirst);
+    numberSecond = Number(numberSecond);
 
     switch (operation) {
       case "+":
-        return add(numberFirst, numberSecond);
-        break;
-
+        return numberFirst + numberSecond;
       case "-":
-        return mines(numberFirst, numberSecond);
-        break;
-
+        return numberFirst - numberSecond;
       case "/":
-        return division(numberFirst, numberSecond);
-        break;
-
+        return numberFirst / numberSecond;
       case "*":
-        return multiple(numberFirst, numberSecond);
-        break;
-
+        return numberFirst * numberSecond;
       default:
-        return operation;
+        return;
     }
   };
 
-  const pm = (e) => {
-    const value = e.target.value;
+  const equal = () => {
+    let parts = number.split(" ");
+    let result = Number(parts[0]);
+    let operation = null;
 
-    if (value === "pm") {
-      if (number === "") return;
-      let calc;
-      if (Number(number.slice(-1))) {
-        calc = eval(number);
-        if (Math.sign(calc) < 0) {
-          calc = Math.abs(calc);
-          setNumber(calc.toString());
-          return;
-        } else {
-          setNumber("-" + calc.toString());
-          return;
-        }
+    let index = 0;
+    for (let part of parts) {
+      if (index % 2 === 0 && index !== 0) {
+        result = calculate(result, operation, Number(part));
+      } else if (index % 2 !== 0) {
+        operation = part;
       }
+      index++;
     }
+
+    setNumber(result.toString());
+  };
+
+  const pm = () => {
+    if (number === "") return;
+    let calc = Number(number);
+    setNumber((Math.sign(calc) < 0 ? Math.abs(calc) : -calc).toString());
   };
 
   return (
@@ -109,7 +82,7 @@ const Calculator = () => {
           <Button
             className="fs-4"
             item="C"
-            onclick={() => setNumber(number.slice(0, -2))}
+            onclick={() => setNumber(number.slice(0, -1))}
           />
         </ButtonBox>
       </Wrapper>
