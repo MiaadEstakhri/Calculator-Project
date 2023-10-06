@@ -27,19 +27,10 @@ const Calculator = () => {
   const equal = () => {
     let parts = number.split(" ");
     let result = Number(parts[0]);
-    console.log("33333", parts, result);
     for (let i = 1; i < parts.length; i += 2) {
       let operation = parts[i];
       let nextNumber = Number(parts[i + 1]);
       result = calculate(result, operation, nextNumber);
-      console.log(
-        "aaaa",
-        operation,
-        "bbbbb",
-        nextNumber,
-        "cccc",
-        (result = calculate(result, operation, nextNumber))
-      );
     }
 
     setNumber(result.toString());
